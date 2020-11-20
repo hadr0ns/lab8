@@ -140,6 +140,7 @@ void AVL::rotateLeft(Node*& node) {
 	Node* temp = node;
 	Node* nodeParent;
 	if (node != root) {
+		bool right = isRightChild(node);
 		nodeParent = node->getParent();
 		node = node->getRightChild();
 		temp->setRightChild(node->getLeftChild());
@@ -148,7 +149,11 @@ void AVL::rotateLeft(Node*& node) {
 		}
 		node->setLeftChild(temp);
 		node->setParent(nodeParent);
-		nodeParent->setRightChild(node);
+		if (right) {
+			nodeParent->setRightChild(node);
+		} else {
+			nodeParent->setLeftChild(node);
+		}
 		temp->setParent(node);
 	} else {
 		node = node->getRightChild();
@@ -168,15 +173,20 @@ void AVL::rotateRight(Node*& node) {
 	Node* temp = node;
 	Node* nodeParent;
 	if (node != root) {
+		bool right = (isRightChild(node));
 		nodeParent = node->getParent();
 		node = node->getLeftChild();
 		temp->setLeftChild(node->getRightChild());
 		if (node->hasRightChild()) {
-			node->getLeftChild()->setParent(temp);
+			node->getRightChild()->setParent(temp);
 		}
 		node->setRightChild(temp);
 		temp->setParent(node);
-		nodeParent->setRightChild(node);
+		if (right) {
+			nodeParent->setRightChild(node);
+		} else {
+			nodeParent->setLeftChild(node);
+		}
 		node->setParent(nodeParent);
 	} else {
 		node = node->getLeftChild();
@@ -216,7 +226,6 @@ bool AVL::remove(int data) {
 			return true;
 		} else if (root->hasLandRChildren()) {
 			//root has left and right children; will need to do a switcharoo.
-			//somehow new root parent is being assigned wrong, and the left child of the root is not making the transition either.
 			Node* newRoot = findNewLocalRoot(removeNodeLeftChild);
 			Node* newRootParent;
 			newRootParent = newRoot->getParent();
@@ -234,10 +243,8 @@ bool AVL::remove(int data) {
 				return true;
 			} else {
 				//the current root/removeNode is not the immediate parent of the new root
-				//cout << "Did I get here?" << endl;
 				if (!newRoot->hasChild()) {
 					//new root does not have a child;
-					//cout <<"Here I am " << endl;
 					newRootParent->setRightChild(NULL);
 
 				} else if (newRoot->hasLeftChild()) {
@@ -259,7 +266,7 @@ bool AVL::remove(int data) {
 				root->setParent(NULL);
 				delete removeNode;
 				size--;
-				balanceTree(root);
+				balanceTree(newRootParent);
 				return true;
 			}
 		} else if (root->hasChild()) {

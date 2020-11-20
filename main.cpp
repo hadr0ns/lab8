@@ -18,12 +18,35 @@ namespace ta {
 	std::istream& getline(std::istream& is, std::string& line);
 }
 
-
+string BSTtoString(AVL* bst);
 int main() {
 	//my testing section
 	/*
 	AVL* tree = new AVL();
-	bool isAdded = tree->add();
+	bool isAdded;
+	for (int i = 1; i <= 20; i++) {
+		isAdded = tree->add(i);
+	}
+	string treePrint = BSTtoString(tree);
+	cout <<treePrint<<endl;
+	bool isRemoved;
+	cout << "now removing 8" << endl;
+	isRemoved = tree->remove(8);
+	treePrint = BSTtoString(tree);
+	cout <<treePrint<<endl;
+	cout <<"now removing 7"<<endl;
+	isRemoved = tree->remove(7);
+	treePrint = BSTtoString(tree);
+	cout <<treePrint<<endl;
+	cout <<"now removing 6"<<endl;
+	isRemoved = tree->remove(6);
+	treePrint = BSTtoString(tree);
+	cout <<treePrint<<endl;
+	cout << "now removing 5"<<endl;
+	isRemoved = tree->remove(5);
+	treePrint = BSTtoString(tree);
+	cout <<treePrint<<endl;
+
 
 
 	//*/
@@ -64,7 +87,7 @@ int main() {
 
 //a function that takes an AVL and returns a level-order string representation of the AVL
 //returns a string representation of the nodes in level order
-string BSTtoString(AVL* bst);
+//string BSTtoString(AVL* bst);
 
 void parse_instruction(std::string temp, std::ofstream &ofs, AVL* aptr) {
 	std::string command, expression;
