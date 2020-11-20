@@ -4,6 +4,8 @@
 #include <queue>
 #include "AVL.h"
 
+#include <vector>
+
 const int NUM_FILES = 5; // the total number of files to be read from
 
 const std::string fileArray[NUM_FILES] = { "file1.txt", "file2.txt", "file3.txt", "file4.txt", "file5.txt" }; // the string array containing the file names
@@ -21,31 +23,25 @@ namespace ta {
 string BSTtoString(AVL* bst);
 int main() {
 	//my testing section
-	/*
+
+	//4:30 am update: was working on debugging. the add function is going wrong somewhere in here, ending up with wrongly assigned children and ending in a seg fault later on. this is from file 4, the specific section where stuff starts going wrong. rewrote the debug section to make it easier to use.
+	//*
 	AVL* tree = new AVL();
 	bool isAdded;
-	for (int i = 1; i <= 20; i++) {
-		isAdded = tree->add(i);
+	string treePrint;
+	vector<int> addVec{15, 14, 7, 5, 9, 3, 6, 8, 12, 1, 11, 13, 2, 10};
+	//vector<int> removeVec{};
+	for (int i = 0; i < addVec.size(); i++) {
+		cout << "Add " << addVec.at(i) << " ";
+		isAdded = tree->add(addVec.at(i));
+		cout << isAdded << endl;
+		treePrint = BSTtoString(tree);
+		cout << treePrint << endl;
 	}
-	string treePrint = BSTtoString(tree);
-	cout <<treePrint<<endl;
-	bool isRemoved;
-	cout << "now removing 8" << endl;
-	isRemoved = tree->remove(8);
-	treePrint = BSTtoString(tree);
-	cout <<treePrint<<endl;
-	cout <<"now removing 7"<<endl;
-	isRemoved = tree->remove(7);
-	treePrint = BSTtoString(tree);
-	cout <<treePrint<<endl;
-	cout <<"now removing 6"<<endl;
-	isRemoved = tree->remove(6);
-	treePrint = BSTtoString(tree);
-	cout <<treePrint<<endl;
-	cout << "now removing 5"<<endl;
-	isRemoved = tree->remove(5);
-	treePrint = BSTtoString(tree);
-	cout <<treePrint<<endl;
+
+
+
+
 
 
 

@@ -1,0 +1,14 @@
+isAdded = tree->add(15);
+isAdded = tree->add(14);
+isAdded = tree->add(7);
+isAdded = tree->add(5);
+isAdded = tree->add(9);
+isAdded = tree->add(3);
+isAdded = tree->add(6);
+isAdded = tree->add(8);
+isAdded = tree->add(12);
+isAdded = tree->add(1);
+isAdded = tree->add(11);
+isAdded = tree->add(13);
+isAdded = tree->add(2);
+isAdded = tree->add(10);
