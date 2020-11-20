@@ -20,6 +20,13 @@ namespace ta {
 
 
 int main() {
+	//my testing section
+	/*
+	AVL* tree = new AVL();
+	bool isAdded = tree->add();
+
+
+	//*/
 
 	std::ifstream ifs; // create the stream to read in from the files
 	std::ofstream ofs; // create the output stream to write to an output file
