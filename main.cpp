@@ -20,32 +20,9 @@ namespace ta {
 	std::istream& getline(std::istream& is, std::string& line);
 }
 
-string BSTtoString(AVL* bst);
+
 int main() {
-	//my testing section
 
-	//4:30 am update: was working on debugging. the add function is going wrong somewhere in here, ending up with wrongly assigned children and ending in a seg fault later on. this is from file 4, the specific section where stuff starts going wrong. rewrote the debug section to make it easier to use.
-	//*
-	AVL* tree = new AVL();
-	bool isAdded;
-	string treePrint;
-	vector<int> addVec{15, 14, 7, 5, 9, 3, 6, 8, 12, 1, 11, 13, 2, 10};
-	//vector<int> removeVec{};
-	for (int i = 0; i < addVec.size(); i++) {
-		cout << "Add " << addVec.at(i) << " ";
-		isAdded = tree->add(addVec.at(i));
-		cout << isAdded << endl;
-		treePrint = BSTtoString(tree);
-		cout << treePrint << endl;
-	}
-
-
-
-
-
-
-
-	//*/
 
 	std::ifstream ifs; // create the stream to read in from the files
 	std::ofstream ofs; // create the output stream to write to an output file
@@ -83,7 +60,7 @@ int main() {
 
 //a function that takes an AVL and returns a level-order string representation of the AVL
 //returns a string representation of the nodes in level order
-//string BSTtoString(AVL* bst);
+string BSTtoString(AVL* bst);
 
 void parse_instruction(std::string temp, std::ofstream &ofs, AVL* aptr) {
 	std::string command, expression;

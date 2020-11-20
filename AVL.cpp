@@ -192,7 +192,7 @@ void AVL::rotateRight(Node*& node) {
 		node = node->getLeftChild();
 		temp->setLeftChild(node->getRightChild());
 		if (node->hasRightChild()) {
-			node->getLeftChild()->setParent(temp);
+			node->getRightChild()->setParent(temp);
 		}
 		node->setRightChild(temp);
 		temp->setParent(node);
@@ -311,11 +311,6 @@ bool AVL::remove(int data) {
 		//Node* NLRRightChild = newLocalRoot->getRightChild();
 
 		if (NLRParent == removeNode) {
-			if (removeNode->getLeftChild() != newLocalRoot) {
-				cout << "you did this wrong" << endl;
-			} else {
-				cout<< "this isnt it" << endl;
-			}
 			//removeNode's left child will be the new local root.
 			if (isRightChild(removeNode)) {
 				removeNodeParent->setRightChild(newLocalRoot);
